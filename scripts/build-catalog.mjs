@@ -31,8 +31,11 @@ const allGroups = categories.flatMap(function(category) {
 const newProductsGroup = allGroups.find(function(group) {
   return normalized(group.title).includes("novi proizvodi");
 });
-const detergentGroups = allGroups.filter(function(group) {
-  return normalized(group.title).includes("deter");
+const washingPowderGroup = allGroups.find(function(group) {
+  const title = normalized(group.title);
+  return title.includes("prasak") && title.includes("ves");
+}) || allGroups.find(function(group) {
+  return normalized(group.title).includes("prasak");
 });
 const hygieneCategory = categories.find(function(category) {
   const title = normalized(category.title);
@@ -46,14 +49,12 @@ function visualProduct(product) {
 }
 const homepageNewProducts = ((newProductsGroup && newProductsGroup.products) || [])
   .filter(function(product) { return product.image; }).slice(0, 8).map(visualProduct);
-const homepageDetergents = (detergentGroups.length
-  ? detergentGroups.flatMap(function(group) { return group.products; })
-  : fallbackHygiene)
+const homepageWashingPowders = ((washingPowderGroup && washingPowderGroup.products) || fallbackHygiene)
   .filter(function(product) { return product.image; }).slice(0, 6).map(visualProduct);
 await writeFile("homepage-products.json", JSON.stringify({
   updatedAt: new Date().toISOString(),
   newProducts: homepageNewProducts,
-  detergents: homepageDetergents
+  washingPowders: homepageWashingPowders
 }, null, 2));
 
 function esc(value) {
@@ -99,4 +100,4 @@ const catalogHtml = '<!doctype html><html lang="sr"><head><meta charset="utf-8">
 
 await writeFile("katalog-print.html", catalogHtml);
 console.log("Catalog prepared: " + categories.length + " categories, " + productCount + " products.");
-console.log("Homepage slides: " + homepageNewProducts.length + " new products, " + homepageDetergents.length + " detergents.");
+console.log("Homepage slides: " + homepageNewProducts.length + " new products, " + homepageWashingPowders.length + " washing powders.");
