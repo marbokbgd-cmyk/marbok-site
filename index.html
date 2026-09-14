@@ -36,6 +36,10 @@
     @media(max-width:900px){.hero{padding-top:120px;background:radial-gradient(circle at 8% 12%,rgba(255,201,63,.6),transparent 18%),linear-gradient(150deg,#fff8e9,#eaf7ff)}.hero-layout{grid-template-columns:1fr}.hero-art{height:440px;max-width:600px;width:100%;margin:10px auto 0}.showcase-head{display:block}.categories{grid-template-columns:1fr}}
     @media(max-width:600px){.hero{min-height:auto;padding-bottom:72px}.hero-art{height:350px;border-radius:35px}.hero-product-slot{width:145px!important;height:145px!important;padding:9px}.hero-product-slot img{height:108px!important}.hero-product-slot:nth-child(1){left:5px;top:22px}.hero-product-slot:nth-child(2){right:3px;top:45px}.hero-product-slot:nth-child(3){left:42px;bottom:12px}.hero-product-slot:nth-child(4){right:8px;bottom:5px}.mini-products{display:flex;overflow:auto;padding-bottom:10px;scroll-snap-type:x mandatory}.mini-product{flex:0 0 145px;scroll-snap-align:start}.product-showcase{padding-top:62px}.category-collage{inset:15px 12px 155px}.category-collage img{height:130px!important}}
 
+  
+    /* Simplified homepage without product packshots */
+    .hero-layout{display:block}.hero-copy{max-width:850px}.hero:after{right:12%;font-size:62px}.hero-art,.product-showcase,.category-collage{display:none!important}.categories{position:relative}.category{min-height:460px}.category:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;right:-55px;top:-70px;background:rgba(255,255,255,.2);box-shadow:-320px 145px 0 -75px rgba(255,255,255,.14),-90px 330px 0 -105px rgba(255,255,255,.18)}.category-content{max-width:560px}
+
   </style>
 </head>
 <body>
@@ -46,7 +50,7 @@
       </a>
       <nav class="links" id="navLinks" aria-label="Glavna navigacija">
         <a href="#o-nama">O nama</a><a href="#asortiman">Asortiman</a><a href="#saradnja">Saradnja</a><a href="Marbok-katalog.pdf" target="_blank">PDF katalog</a><a href="#kontakt">Kontakt</a>
-        <a class="btn btn-red" href="katalog.html">Katalog proizvoda <span class="arrow">→</span></a>
+        <a class="btn btn-red" href="Marbok-katalog.pdf" target="_blank" rel="noopener">PDF katalog <span class="arrow">↓</span></a>
       </nav>
       <button class="menu" id="menuBtn" aria-label="Otvori meni" aria-expanded="false">☰</button>
     </div>
@@ -60,13 +64,10 @@
           <h1>Proizvodi koji privlače pogled i ostaju na polici.</h1>
           <p class="lead">Uvoz i distribucija konditorskih proizvoda, kućne i lične higijene za poslovne partnere širom Srbije.</p>
           <div class="hero-actions">
-            <a class="btn btn-red" href="katalog.html">Pogledajte katalog <span class="arrow">→</span></a>
+            <a class="btn btn-red" href="Marbok-katalog.pdf" target="_blank" rel="noopener">Pogledajte PDF katalog <span class="arrow">↓</span></a>
             <a class="btn btn-light" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac ↗</a>
           </div>
           <div class="hero-note"><i></i><span>Javni katalog bez cena · Veleprodajne cene i poručivanje nakon odobrenja naloga</span></div>
-        </div>
-        <div class="hero-art" id="heroProducts" aria-label="Izdvojeni proizvodi">
-          <div class="hero-product-slot"></div><div class="hero-product-slot"></div><div class="hero-product-slot"></div><div class="hero-product-slot"></div>
         </div>
       </div>
     </section>
@@ -79,16 +80,6 @@
         <div class="stat"><strong>Online poručivanje</strong><span>brzo i jednostavno poručivanje</span></div>
       </div>
     </div>
-
-    <section class="product-showcase" aria-label="Izdvojeno iz ponude">
-      <div class="wrap">
-        <div class="showcase-head">
-          <div><span class="eyebrow">Šarenilo naše ponude</span><h2>Proizvodi koji se primećuju.</h2></div>
-          <a href="katalog.html">Pogledajte svih 310 proizvoda →</a>
-        </div>
-        <div class="mini-products" id="miniProducts"></div>
-      </div>
-    </section>
 
     <section id="o-nama">
       <div class="wrap intro-grid">
@@ -114,7 +105,6 @@
         </div>
         <div class="categories">
           <article class="category category-candy">
-            <div class="category-collage" id="candyCollage"></div>
             <div class="category-content">
               <h3>Konditorski proizvodi</h3>
               <p>Šaren, prepoznatljiv asortiman koji privlači pažnju na polici.</p>
@@ -122,7 +112,6 @@
             </div>
           </article>
           <article class="category category-care">
-            <div class="category-collage" id="careCollage"></div>
             <div class="category-content">
               <h3>Kućna i lična higijena</h3>
               <p>Praktični i upečatljivi proizvodi za svakodnevnu upotrebu.</p>
@@ -151,7 +140,7 @@
         <h2>Pogledajte ponudu. Registrujte firmu. Poručujte jednostavno.</h2>
         <p>Katalog proizvoda dostupan je bez prijave i bez prikaza cena. Poslovni kupci mogu da se registruju za pristup veleprodajnim cenama i online poručivanju.</p>
         <div class="cta-actions">
-          <a class="btn btn-red" href="katalog.html">Otvorite katalog <span class="arrow">→</span></a>
+          <a class="btn btn-red" href="Marbok-katalog.pdf" target="_blank" rel="noopener">Otvorite PDF katalog <span class="arrow">↓</span></a>
           <a class="btn btn-light" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac ↗</a>
           <a class="btn btn-light" href="Marbok-katalog.pdf" target="_blank" rel="noopener">Preuzmite PDF katalog ↓</a>
         </div>
@@ -182,54 +171,18 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div><strong style="color:#fff">MARBOK DOO</strong><br><small>© <span id="year"></span> Sva prava zadržana.</small></div>
-      <div class="footer-nav"><a href="#o-nama">O nama</a><a href="katalog.html">Katalog proizvoda</a><a href="Marbok-katalog.pdf" target="_blank">PDF katalog</a><a href="#kontakt">Kontakt</a><a href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registracija kupca</a></div>
+      <div class="footer-nav"><a href="#o-nama">O nama</a><a href="Marbok-katalog.pdf" target="_blank">PDF katalog</a><a href="#kontakt">Kontakt</a><a href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registracija kupca</a></div>
     </div>
   </footer>
 
-  <a class="mobile-cta" href="katalog.html">Katalog proizvoda →</a>
+  <a class="mobile-cta" href="Marbok-katalog.pdf" target="_blank" rel="noopener">PDF katalog ↓</a>
   <script>
     const btn=document.getElementById('menuBtn'),nav=document.getElementById('navLinks');
     btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.textContent=open?'×':'☰'});
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰'}));
     document.getElementById('year').textContent=new Date().getFullYear();
 
-    async function loadProductVisuals(){
-      try{
-        const response=await fetch("./catalog-data.json",{cache:"no-store"});
-        if(!response.ok)return;
-        const data=await response.json();
-        const categories=Array.isArray(data.categories)?data.categories:[];
-        const byCategory=categories.map(category=>({
-          title:category.title||"",
-          products:(category.groups||[]).flatMap(group=>(group.products||[]).filter(product=>product&&product.image))
-        }));
-        const products=byCategory.flatMap(item=>item.products);
-        const picks=products.filter((product,index)=>index%Math.max(1,Math.floor(products.length/24))===0).slice(0,12);
-        document.querySelectorAll(".hero-product-slot").forEach((slot,index)=>{
-          const product=picks[index]||products[index];
-          if(!product)return;
-          const img=document.createElement("img");img.src=product.image+"?w=600&h=600&fit=max&auto=format";img.alt=product.name||"Marbok proizvod";
-          const name=document.createElement("span");name.textContent=product.name||"Marbok proizvod";
-          slot.append(img,name);
-        });
-        const mini=document.getElementById("miniProducts");
-        picks.slice(4,10).forEach(product=>{
-          const card=document.createElement("a");card.className="mini-product";card.href="katalog.html";
-          const img=document.createElement("img");img.src=product.image+"?w=500&h=500&fit=max&auto=format";img.alt=product.name||"Marbok proizvod";img.loading="lazy";
-          const name=document.createElement("b");name.textContent=product.name||"Marbok proizvod";
-          card.append(img,name);mini.append(card);
-        });
-        const candy=byCategory.find(item=>/konditor|slat|candy/i.test(item.title))||byCategory[0];
-        const care=byCategory.find(item=>/higij|ličn|licn|kuć|kuc/i.test(item.title))||byCategory[1]||byCategory[0];
-        [[document.getElementById("candyCollage"),candy],[document.getElementById("careCollage"),care]].forEach(([target,item])=>{
-          if(!target||!item)return;
-          item.products.slice(0,4).forEach(product=>{
-            const img=document.createElement("img");img.src=product.image+"?w=650&h=650&fit=max&auto=format";img.alt=product.name||"";img.loading="lazy";target.append(img);
-          });
-        });
-      }catch(error){}
-    }
-    loadProductVisuals();
+
 
   </script>
 </body>
