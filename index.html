@@ -60,7 +60,7 @@
         <span class="mark">MARBOK</span><small>Uvoz · Distribucija</small>
       </a>
       <nav class="links" id="navLinks" aria-label="Glavna navigacija">
-        <a href="#o-nama">O nama</a><a href="#asortiman">Asortiman</a><a href="#saradnja">Saradnja</a><a href="Marbok-katalog.pdf" target="_blank">PDF katalog</a><a href="#kontakt">Kontakt</a>
+        <a href="#o-nama">O nama</a><a href="#saradnja">Saradnja</a><a href="Marbok-katalog.pdf" target="_blank">PDF katalog</a><a href="#kontakt">Kontakt</a>
         <a class="btn btn-red" href="Marbok-katalog.pdf" target="_blank" rel="noopener">PDF katalog <span class="arrow">↓</span></a>
       </nav>
       <button class="menu" id="menuBtn" aria-label="Otvori meni" aria-expanded="false">☰</button>
@@ -104,35 +104,6 @@
             <div class="check"><b>✓</b><span>Konkurentni uslovi</span></div>
             <div class="check"><b>✓</b><span>Direktna podrška</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="assortment" id="asortiman">
-      <div class="wrap">
-        <div class="section-head">
-          <div><span class="eyebrow">Naš asortiman</span><h2>Dve snažne kategorije.<br>Jedan pouzdan partner.</h2></div>
-          <p>Pregledajte aktuelne proizvode i pakovanja u profesionalnom javnom katalogu. Cene su dostupne samo registrovanim kupcima.</p>
-        </div>
-        <div class="categories">
-          <article class="category category-candy">
-            <div class="category-slider" id="newProductsSlider" aria-label="Novi konditorski proizvodi"></div>
-            <div class="slider-dots" id="newProductsDots" aria-hidden="true"></div>
-            <div class="category-content">
-              <h3>Konditorski proizvodi</h3>
-              <p>Šaren, prepoznatljiv asortiman koji privlači pažnju na polici.</p>
-              <div class="chips"><span class="chip">Bombone</span><span class="chip">Čokolade</span><span class="chip">Lizalice</span><span class="chip">Žvake</span><span class="chip">Keks i vafli</span></div>
-            </div>
-          </article>
-          <article class="category category-care">
-            <div class="category-slider" id="detergentSlider" aria-label="Deterdženti"></div>
-            <div class="slider-dots" id="detergentDots" aria-hidden="true"></div>
-            <div class="category-content">
-              <h3>Kućna i lična higijena</h3>
-              <p>Praktični i upečatljivi proizvodi za svakodnevnu upotrebu.</p>
-              <div class="chips"><span class="chip">Pranje veša</span><span class="chip">Čišćenje doma</span><span class="chip">Nega tela</span><span class="chip">Lična higijena</span></div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -196,35 +167,7 @@
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰'}));
     document.getElementById('year').textContent=new Date().getFullYear();
 
-    function setupCategorySlider(sliderId,dotsId,items){
-      const slider=document.getElementById(sliderId),dots=document.getElementById(dotsId);
-      if(!slider||!Array.isArray(items)||!items.length)return;
-      items.forEach((product,index)=>{
-        const slide=document.createElement("figure");slide.className="category-slide"+(index===0?" active":"");
-        const img=document.createElement("img");img.src=product.image+"?w=850&h=650&fit=max&auto=format";img.alt=product.name||"Marbok proizvod";img.loading=index===0?"eager":"lazy";
-        const caption=document.createElement("figcaption");caption.textContent=product.name||"Marbok proizvod";
-        slide.append(img,caption);slider.append(slide);
-        const dot=document.createElement("i");if(index===0)dot.className="active";dots.append(dot);
-      });
-      if(items.length<2)return;
-      let active=0;
-      setInterval(()=>{
-        const slides=slider.querySelectorAll(".category-slide"),indicators=dots.querySelectorAll("i");
-        slides[active].classList.remove("active");indicators[active].classList.remove("active");
-        active=(active+1)%slides.length;
-        slides[active].classList.add("active");indicators[active].classList.add("active");
-      },2600);
-    }
-    async function loadCategorySlides(){
-      try{
-        const response=await fetch("./homepage-products.json",{cache:"no-store"});
-        if(!response.ok)return;
-        const data=await response.json();
-        setupCategorySlider("newProductsSlider","newProductsDots",(data.newProducts||[]).slice(0,8));
-        setupCategorySlider("detergentSlider","detergentDots",(data.detergents||[]).slice(0,6));
-      }catch(error){}
-    }
-    loadCategorySlides();
+
 
 
 
