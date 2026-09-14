@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Katalog proizvoda — Marbok DOO</title>
+  <meta name="description" content="Aktuelni katalog proizvoda kompanije Marbok DOO. Pregledajte konditorske proizvode, kućnu i ličnu higijenu bez prikaza veleprodajnih cena.">
+  <meta name="theme-color" content="#071428">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#071428;--navy2:#0b1f3a;--red:#e51b2b;--blue:#168cf0;--gold:#f3bd35;--ink:#10223b;--muted:#647184;--line:#dfe5ec;--soft:#f5f7fa;--white:#fff;--shadow:0 20px 55px rgba(7,20,40,.11)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--soft);line-height:1.55}a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1240px,calc(100% - 40px));margin:auto}
+    .header{position:sticky;top:0;z-index:50;background:rgba(7,20,40,.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,.12)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;color:#fff}.mark{position:relative;display:grid;place-items:center;height:42px;min-width:132px;padding:0 16px;border-radius:999px;background:var(--red);font-size:1.22rem;font-weight:900;box-shadow:inset 0 0 0 2px rgba(255,255,255,.15)}.mark:before,.mark:after{position:absolute;font-size:1.1rem;font-weight:900}.mark:before{content:"‹";left:6px;color:var(--gold)}.mark:after{content:"›";right:6px;color:#78bbff}.brand small{color:#a8b6c8;font-size:.64rem;letter-spacing:.15em;text-transform:uppercase}.nav-actions{display:flex;align-items:center;gap:12px}.nav-link{color:#e7edf5;font-weight:700;font-size:.9rem}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid transparent;font-weight:800;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 26px rgba(229,27,43,.25)}.btn-light{background:#fff;color:var(--navy)}.btn-outline{border-color:var(--line);background:#fff;color:var(--navy)}
+    .hero{padding:76px 0 54px;background:radial-gradient(circle at 85% 10%,rgba(22,140,240,.28),transparent 30%),linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.crumb{display:inline-flex;gap:8px;color:#aebccd;font-size:.82rem;margin-bottom:26px}.crumb a{color:#fff}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:70px;align-items:end}.eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#ffd36b}.hero h1{font-size:clamp(2.7rem,6vw,5.4rem);line-height:1;letter-spacing:-.055em;margin:12px 0 22px}.hero p{max-width:700px;color:#ced8e5;font-size:1.08rem;margin:0}.register-box{padding:26px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.07)}.register-box strong{display:block;font-size:1.15rem;margin-bottom:7px}.register-box p{font-size:.88rem;margin-bottom:18px}.register-box .btn{width:100%}
+    .tools{position:sticky;top:76px;z-index:30;background:rgba(245,247,250,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.tools-inner{padding:18px 0}.tool-row{display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:14px;align-items:center}.search{position:relative}.search span{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--muted)}.search input{width:100%;height:52px;border:1px solid var(--line);border-radius:15px;background:#fff;padding:0 18px 0 46px;color:var(--ink);outline:none}.search input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,140,240,.12)}.result-count{white-space:nowrap;color:var(--muted);font-size:.9rem;font-weight:700}.filters{display:flex;gap:8px;overflow:auto;padding:12px 0 2px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}.filter{flex:none;border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 14px;color:var(--ink);font-size:.82rem;font-weight:800;cursor:pointer}.filter.active{background:var(--navy);border-color:var(--navy);color:#fff}
+    .catalog{padding:48px 0 110px}.status{min-height:280px;display:grid;place-items:center;text-align:center;color:var(--muted)}.loader{width:42px;height:42px;border:4px solid #dce3eb;border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}@keyframes spin{to{transform:rotate(360deg)}}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.card{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 7px 22px rgba(7,20,40,.04);transition:.25s}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.image{aspect-ratio:1/1;background:linear-gradient(145deg,#fff,#edf1f5);display:grid;place-items:center;overflow:hidden}.image img{width:100%;height:100%;object-fit:contain;padding:18px}.placeholder{width:68px;height:68px;border-radius:18px;background:#e8edf3;display:grid;place-items:center;color:#9ca8b7;font-size:1.6rem}.card-body{padding:20px}.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.card h2{font-size:1.02rem;line-height:1.35;margin:11px 0 14px;min-height:2.7em}.details{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem}.package{color:var(--muted)}.no-price{color:var(--blue);font-weight:800}.empty{padding:70px 24px;background:#fff;border:1px solid var(--line);border-radius:22px;text-align:center}.empty h2{margin-bottom:7px}
+    .bottom-cta{background:var(--navy);color:#fff;padding:56px 0}.bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:35px}.bottom-cta h2{font-size:clamp(1.6rem,3vw,2.7rem);line-height:1.08;margin:0 0 8px}.bottom-cta p{color:#bfcbda;margin:0}.bottom-actions{display:flex;gap:10px;flex:none}.footer{padding:28px 0;background:#050f1e;color:#a9b7c8}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:.85rem}.mobile-register{display:none}
+    @media(max-width:1020px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-grid{grid-template-columns:1fr;gap:34px}.register-box{max-width:520px}}
+    @media(max-width:760px){.wrap{width:min(100% - 26px,1240px)}.nav{min-height:70px}.brand small,.nav-link{display:none}.nav-actions .btn{min-height:42px;padding:0 15px;font-size:.78rem}.tools{top:70px}.hero{padding:48px 0 40px}.hero h1{font-size:2.75rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card-body{padding:15px}.card h2{font-size:.9rem}.meta{font-size:.61rem}.details{display:block}.no-price{display:block;margin-top:5px}.bottom-inner{display:block}.bottom-actions{margin-top:24px;flex-wrap:wrap}.mobile-register{display:flex;position:fixed;left:13px;right:13px;bottom:13px;z-index:55;min-height:52px;border-radius:999px;background:var(--red);color:#fff;align-items:center;justify-content:center;font-weight:800;box-shadow:0 15px 35px rgba(5,15,30,.38)}.footer{padding-bottom:92px}}
+    @media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.image img{padding:10px}.card-body{padding:13px}.card h2{font-size:.82rem}.package{font-size:.72rem}.hero h1{font-size:2.4rem}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Marbok početna">
+        <span class="mark">MARBOK</span><small>Uvoz · Distribucija</small>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Početna</a>
+        <a class="nav-link" href="https://marbok.vercel.app/auth/login" target="_blank" rel="noopener">Prijava kupaca</a>
+        <a class="btn btn-red" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="crumb"><a href="index.html">Početna</a><span>›</span><span>Katalog proizvoda</span></div>
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Aktuelna ponuda</div>
+            <h1>Katalog proizvoda</h1>
+            <p>Pregledajte naš aktuelni asortiman po kategorijama. Veleprodajne cene i mogućnost poručivanja dostupne su registrovanim i odobrenim kupcima.</p>
+          </div>
+          <aside class="register-box">
+            <strong>Želite cene i online poručivanje?</strong>
+            <p>Registrujte firmu kao kupca. Nakon odobrenja naloga dobijate pristup kompletnom portalu.</p>
+            <a class="btn btn-red" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac ↗</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools" aria-label="Pretraga kataloga">
+      <div class="wrap tools-inner">
+        <div class="tool-row">
+          <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Pretražite po nazivu ili šifri proizvoda…" autocomplete="off"></label>
+          <div class="result-count" id="resultCount">Učitavanje ponude…</div>
+        </div>
+        <div class="filters" id="filters" aria-label="Kategorije proizvoda"></div>
+      </div>
+    </section>
+
+    <section class="catalog">
+      <div class="wrap">
+        <div class="status" id="status"><div><div class="loader"></div><strong>Učitavamo aktuelni katalog…</strong></div></div>
+        <div class="grid" id="grid" hidden></div>
+      </div>
+    </section>
+
+    <section class="bottom-cta">
+      <div class="wrap bottom-inner">
+        <div><h2>Postanite Marbok kupac.</h2><p>Otvorite poslovni nalog za pristup cenama i jednostavno online poručivanje.</p></div>
+        <div class="bottom-actions">
+          <a class="btn btn-red" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac</a>
+          <a class="btn btn-light" href="https://marbok.vercel.app/auth/login" target="_blank" rel="noopener">Prijava kupaca</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-inner"><strong style="color:#fff">MARBOK DOO</strong><span>© <span id="year"></span> Sva prava zadržana.</span></div></footer>
+  <a class="mobile-register" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac ↗</a>
+
+  <script>
+    const state={products:[],category:"Sve",query:""};
+    const grid=document.getElementById("grid");
+    const status=document.getElementById("status");
+    const filters=document.getElementById("filters");
+    const count=document.getElementById("resultCount");
+    const search=document.getElementById("search");
+
+    function clean(value){return value==null?"":String(value)}
+    function escapeHtml(value){return clean(value).replace(/[&<>"']/g,function(char){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[char]})}
+    function searchable(value){return clean(value).toLocaleLowerCase("sr")}
+
+    function setFilter(category){
+      state.category=category;
+      document.querySelectorAll(".filter").forEach(function(button){button.classList.toggle("active",button.dataset.category===category)});
+      render();
+    }
+
+    function render(){
+      const query=searchable(state.query.trim());
+      const visible=state.products.filter(function(product){
+        const categoryMatch=state.category==="Sve"||product.category===state.category;
+        const haystack=searchable([product.name,product.productKey,product.package,product.group,product.category].join(" "));
+        return categoryMatch&&(!query||haystack.includes(query));
+      });
+      count.textContent=visible.length+" proizvoda";
+      grid.hidden=false;
+      status.hidden=true;
+      if(!visible.length){
+        grid.innerHTML='<div class="empty" style="grid-column:1/-1"><h2>Nema pronađenih proizvoda</h2><p>Promenite kategoriju ili pokušajte sa drugim nazivom ili šifrom.</p></div>';
+        return;
+      }
+      grid.innerHTML=visible.map(function(product){
+        const image=product.image?'<img src="'+escapeHtml(product.image)+'?w=700&h=700&fit=max&auto=format" alt="'+escapeHtml(product.name)+'" loading="lazy">':'<div class="placeholder">◇</div>';
+        return '<article class="card"><div class="image">'+image+'</div><div class="card-body"><div class="meta"><span>'+escapeHtml(product.category)+'</span><span>'+escapeHtml(product.productKey||"")+'</span></div><h2>'+escapeHtml(product.name||"Proizvod")+'</h2><div class="details"><span class="package">'+escapeHtml(product.package||"Pakovanje na upit")+'</span><span class="no-price">Cena nakon prijave</span></div></div></article>';
+      }).join("");
+    }
+
+    async function loadCatalog(){
+      try{
+        const response=await fetch("./catalog-data.json",{cache:"no-store"});
+        if(!response.ok)throw new Error("Katalog nije dostupan");
+        const data=await response.json();
+        const categories=Array.isArray(data.categories)?data.categories:[];
+        state.products=categories.flatMap(function(category){
+          return (category.groups||[]).flatMap(function(group){
+            return (group.products||[]).filter(Boolean).map(function(product){
+              return Object.assign({},product,{category:category.title||"Ostalo",group:group.title||""});
+            });
+          });
+        });
+        const categoryNames=[...new Set(state.products.map(function(product){return product.category}).filter(Boolean))];
+        filters.innerHTML=["Sve"].concat(categoryNames).map(function(category){
+          return '<button class="filter'+(category==="Sve"?" active":"")+'" type="button" data-category="'+escapeHtml(category)+'">'+escapeHtml(category)+'</button>';
+        }).join("");
+        filters.querySelectorAll(".filter").forEach(function(button){button.addEventListener("click",function(){setFilter(button.dataset.category)})});
+        render();
+      }catch(error){
+        grid.hidden=true;
+        status.hidden=false;
+        count.textContent="Katalog trenutno nije dostupan";
+        status.innerHTML='<div class="empty"><h2>Ponuda se trenutno osvežava</h2><p>Pokušajte ponovo za nekoliko minuta ili nas kontaktirajte za aktuelni katalog.</p><a class="btn btn-red" href="mailto:marbok.bgd@gmail.com?subject=Upit%20za%20aktuelni%20katalog">Pošaljite upit</a></div>';
+      }
+    }
+
+    search.addEventListener("input",function(event){state.query=event.target.value;render()});
+    document.getElementById("year").textContent=new Date().getFullYear();
+    loadCatalog();
+  </script>
+</body>
+</html>
