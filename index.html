@@ -134,7 +134,7 @@
         </div>
 
         <div class="showcase-block detergents">
-          <div class="showcase-title"><h3>Deterdženti</h3><span>Prvih 6 proizvoda iz sekcije deterdženata</span></div>
+          <div class="showcase-title"><h3>Prašak za veš</h3><span>Prvih 6 proizvoda iz sekcije „Prašak za veš“</span></div>
           <div class="clean-slider" id="detergentCarousel">
             <button class="slider-arrow prev" type="button" aria-label="Prethodni proizvod">‹</button>
             <div class="slider-stage"></div>
@@ -238,7 +238,7 @@
         if(!response.ok)return;
         const data=await response.json();
         createSimpleCarousel("newProductsCarousel",(data.newProducts||[]).slice(0,8));
-        createSimpleCarousel("detergentCarousel",(data.detergents||[]).slice(0,6));
+        createSimpleCarousel("detergentCarousel",(data.washingPowders||[]).slice(0,6));
       }catch(error){}
     }
     loadHomepageCarousels();
