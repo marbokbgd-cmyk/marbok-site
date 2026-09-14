@@ -40,6 +40,17 @@
     /* Simplified homepage without product packshots */
     .hero-layout{display:block}.hero-copy{max-width:850px}.hero:after{right:12%;font-size:62px}.hero-art,.product-showcase,.category-collage{display:none!important}.categories{position:relative}.category{min-height:460px}.category:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;right:-55px;top:-70px;background:rgba(255,255,255,.2);box-shadow:-320px 145px 0 -75px rgba(255,255,255,.14),-90px 330px 0 -105px rgba(255,255,255,.18)}.category-content{max-width:560px}
 
+  
+    .category-slider{position:absolute;z-index:2;left:22px;right:22px;top:20px;height:310px;overflow:hidden;border-radius:24px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(5px)}
+    .category-slide{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateX(35px) scale(.94);transition:opacity .7s ease,transform .7s ease;pointer-events:none}
+    .category-slide.active{opacity:1;transform:translateX(0) scale(1)}
+    .category-slide img{position:relative!important;inset:auto!important;width:86%!important;height:245px!important;object-fit:contain!important;padding:8px;filter:drop-shadow(0 18px 18px rgba(30,20,20,.25));transform:none!important}
+    .category:hover .category-slide img{transform:scale(1.025)!important}
+    .category-slide figcaption{position:absolute;left:18px;right:18px;bottom:12px;padding:7px 12px;border-radius:999px;background:rgba(7,20,40,.76);color:#fff;text-align:center;font-size:.75rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .slider-dots{position:absolute;z-index:4;top:342px;left:34px;display:flex;gap:6px}.slider-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:.25s}.slider-dots i.active{width:18px;border-radius:5px;background:#fff}
+    .mobile-cta{display:none!important}
+    @media(max-width:600px){.category-slider{left:12px;right:12px;height:280px}.category-slide img{height:218px!important}.slider-dots{top:312px;left:24px}.category{min-height:470px}}
+
   </style>
 </head>
 <body>
@@ -105,6 +116,8 @@
         </div>
         <div class="categories">
           <article class="category category-candy">
+            <div class="category-slider" id="newProductsSlider" aria-label="Novi konditorski proizvodi"></div>
+            <div class="slider-dots" id="newProductsDots" aria-hidden="true"></div>
             <div class="category-content">
               <h3>Konditorski proizvodi</h3>
               <p>Šaren, prepoznatljiv asortiman koji privlači pažnju na polici.</p>
@@ -112,6 +125,8 @@
             </div>
           </article>
           <article class="category category-care">
+            <div class="category-slider" id="detergentSlider" aria-label="Deterdženti"></div>
+            <div class="slider-dots" id="detergentDots" aria-hidden="true"></div>
             <div class="category-content">
               <h3>Kućna i lična higijena</h3>
               <p>Praktični i upečatljivi proizvodi za svakodnevnu upotrebu.</p>
@@ -175,12 +190,42 @@
     </div>
   </footer>
 
-  <a class="mobile-cta" href="Marbok-katalog.pdf" target="_blank" rel="noopener">PDF katalog ↓</a>
   <script>
     const btn=document.getElementById('menuBtn'),nav=document.getElementById('navLinks');
     btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.textContent=open?'×':'☰'});
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰'}));
     document.getElementById('year').textContent=new Date().getFullYear();
+
+    function setupCategorySlider(sliderId,dotsId,items){
+      const slider=document.getElementById(sliderId),dots=document.getElementById(dotsId);
+      if(!slider||!Array.isArray(items)||!items.length)return;
+      items.forEach((product,index)=>{
+        const slide=document.createElement("figure");slide.className="category-slide"+(index===0?" active":"");
+        const img=document.createElement("img");img.src=product.image+"?w=850&h=650&fit=max&auto=format";img.alt=product.name||"Marbok proizvod";img.loading=index===0?"eager":"lazy";
+        const caption=document.createElement("figcaption");caption.textContent=product.name||"Marbok proizvod";
+        slide.append(img,caption);slider.append(slide);
+        const dot=document.createElement("i");if(index===0)dot.className="active";dots.append(dot);
+      });
+      if(items.length<2)return;
+      let active=0;
+      setInterval(()=>{
+        const slides=slider.querySelectorAll(".category-slide"),indicators=dots.querySelectorAll("i");
+        slides[active].classList.remove("active");indicators[active].classList.remove("active");
+        active=(active+1)%slides.length;
+        slides[active].classList.add("active");indicators[active].classList.add("active");
+      },2600);
+    }
+    async function loadCategorySlides(){
+      try{
+        const response=await fetch("./homepage-products.json",{cache:"no-store"});
+        if(!response.ok)return;
+        const data=await response.json();
+        setupCategorySlider("newProductsSlider","newProductsDots",(data.newProducts||[]).slice(0,8));
+        setupCategorySlider("detergentSlider","detergentDots",(data.detergents||[]).slice(0,6));
+      }catch(error){}
+    }
+    loadCategorySlides();
+
 
 
 
