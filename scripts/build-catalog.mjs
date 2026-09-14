@@ -20,6 +20,46 @@ await writeFile("catalog-data.json", JSON.stringify({
   categories: categories
 }, null, 2));
 
+function normalized(value) {
+  return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+const allGroups = categories.flatMap(function(category) {
+  return (category.groups || []).map(function(group) {
+    return { category: category.title || "", title: group.title || "", products: (group.products || []).filter(Boolean) };
+  });
+});
+const newProductsGroup = allGroups.find(function(group) {
+  return normalized(group.title).includes("novi proizvodi");
+});
+const detergentGroups = allGroups.filter(function(group) {
+  return normalized(group.title).includes("deter");
+});
+const hygieneCategory = categories.find(function(category) {
+  const title = normalized(category.title);
+  return title.includes("higij") || title.includes("kuc") || title.includes("licn");
+});
+const fallbackHygiene = hygieneCategory
+  ? (hygieneCategory.groups || []).flatMap(function(group) { return (group.products || []).filter(Boolean); })
+  : [];
+
+function visualProduct(product) {
+  return { name: product.name || "", image: product.image || "", productKey: product.productKey || "" };
+}
+
+const homepageNewProducts = ((newProductsGroup && newProductsGroup.products) || [])
+  .filter(function(product) { return product.image; }).slice(0, 8).map(visualProduct);
+const homepageDetergents = (detergentGroups.length
+  ? detergentGroups.flatMap(function(group) { return group.products; })
+  : fallbackHygiene)
+  .filter(function(product) { return product.image; }).slice(0, 6).map(visualProduct);
+
+await writeFile("homepage-products.json", JSON.stringify({
+  updatedAt: new Date().toISOString(),
+  newProducts: homepageNewProducts,
+  detergents: homepageDetergents
+}, null, 2));
+
 function esc(value) {
   return String(value == null ? "" : value).replace(/[&<>"']/g, function(char) {
     return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char];
@@ -63,3 +103,4 @@ const catalogHtml = '<!doctype html><html lang="sr"><head><meta charset="utf-8">
 
 await writeFile("katalog-print.html", catalogHtml);
 console.log("Catalog prepared: " + categories.length + " categories, " + productCount + " products.");
+console.log("Homepage visuals: " + homepageNewProducts.length + " new products, " + homepageDetergents.length + " detergents.");
