@@ -28,7 +28,7 @@ function esc(value) {
 
 function productCard(product) {
   const image = product.image
-    ? '<img src="' + esc(product.image) + '?w=600&h=600&fit=max&auto=format" alt="">'
+    ? '<img src="' + esc(product.image) + '?w=320&h=320&fit=max&fm=jpg&q=55" alt="">'
     : '<div class="placeholder">MARBOK</div>';
   return '<article class="product"><div class="photo">' + image + '</div><div class="info"><span class="code">' + esc(product.productKey || "") + '</span><h3>' + esc(product.name || "Proizvod") + '</h3><p>' + esc(product.package || "Pakovanje na upit") + '</p></div></article>';
 }
@@ -40,7 +40,7 @@ const allProducts = categories.flatMap(function(category) {
 }).filter(function(product) { return product.image; });
 
 const coverImages = allProducts.slice(0, 7).map(function(product, index) {
-  return '<div class="cover-product cp' + (index + 1) + '"><img src="' + esc(product.image) + '?w=700&h=700&fit=max&auto=format" alt=""></div>';
+  return '<div class="cover-product cp' + (index + 1) + '"><img src="' + esc(product.image) + '?w=420&h=420&fit=max&fm=jpg&q=60" alt=""></div>';
 }).join("");
 
 const sectionPages = categories.map(function(category, categoryIndex) {
