@@ -32,7 +32,7 @@
       </a>
       <nav class="links" id="navLinks" aria-label="Glavna navigacija">
         <a href="#o-nama">O nama</a><a href="#asortiman">Asortiman</a><a href="#saradnja">Saradnja</a><a href="#kontakt">Kontakt</a>
-        <a class="btn btn-red" href="https://marbok.vercel.app/" target="_blank" rel="noopener">Web shop <span class="arrow">↗</span></a>
+        <a class="btn btn-red" href="katalog.html">Katalog proizvoda <span class="arrow">→</span></a>
       </nav>
       <button class="menu" id="menuBtn" aria-label="Otvori meni" aria-expanded="false">☰</button>
     </div>
@@ -45,10 +45,10 @@
         <h1>Pouzdana distribucija.<br>Proizvodi koji se traže.</h1>
         <p class="lead">Uvoz i distribucija konditorskih proizvoda, kućne i lične higijene za poslovne partnere širom Srbije.</p>
         <div class="hero-actions">
-          <a class="btn btn-red" href="#asortiman">Pogledajte asortiman <span class="arrow">↓</span></a>
-          <a class="btn btn-light" href="#kontakt">Postanite kupac</a>
+          <a class="btn btn-red" href="katalog.html">Pogledajte katalog <span class="arrow">→</span></a>
+          <a class="btn btn-light" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac ↗</a>
         </div>
-        <div class="hero-note"><i></i><span>Registrovani kupci mogu pogledati kompletan web shop sa veleprodajnim cenama.</span></div>
+        <div class="hero-note"><i></i><span>Javni katalog je dostupan svima, dok registrovani kupci vide veleprodajne cene i mogu poručivati online.</span></div>
       </div>
     </section>
 
@@ -81,7 +81,7 @@
       <div class="wrap">
         <div class="section-head">
           <div><span class="eyebrow">Naš asortiman</span><h2>Dve snažne kategorije.<br>Jedan pouzdan partner.</h2></div>
-          <p>Aktuelne proizvode, pakovanja i veleprodajne cene registrovani kupci mogu pogledati u našem web shopu.</p>
+          <p>Pregledajte aktuelne proizvode i pakovanja u profesionalnom javnom katalogu. Cene su dostupne samo registrovanim kupcima.</p>
         </div>
         <div class="categories">
           <article class="category">
@@ -118,12 +118,12 @@
 
     <section class="cta">
       <div class="wrap cta-box">
-        <span class="eyebrow">Web shop</span>
-        <h2>Kompletan asortiman i poručivanje na jednom mestu.</h2>
-        <p>Prijavite se da pogledate aktuelne proizvode i veleprodajne cene ili nam pošaljite upit za otvaranje poslovnog naloga.</p>
+        <span class="eyebrow">Katalog i portal za kupce</span>
+        <h2>Pogledajte ponudu. Registrujte firmu. Poručujte jednostavno.</h2>
+        <p>Katalog proizvoda dostupan je bez prijave i bez prikaza cena. Poslovni kupci mogu da se registruju za pristup veleprodajnim cenama i online poručivanju.</p>
         <div class="cta-actions">
-          <a class="btn btn-red" href="https://marbok.vercel.app/" target="_blank" rel="noopener">Otvorite Web shop <span class="arrow">↗</span></a>
-          <a class="btn btn-light" href="mailto:marbok.bgd@gmail.com?subject=Zahtev%20za%20web%20shop%20nalog">Zatražite pristup</a>
+          <a class="btn btn-red" href="katalog.html">Otvorite katalog <span class="arrow">→</span></a>
+          <a class="btn btn-light" href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registrujte se kao kupac ↗</a>
         </div>
       </div>
     </section>
@@ -133,7 +133,7 @@
         <div>
           <span class="eyebrow">Kontakt</span>
           <h2>Razgovarajmo o saradnji.</h2>
-          <p style="color:var(--muted);max-width:540px">Ako želite ponudu, dodatne informacije ili otvaranje naloga za web shop, kontaktirajte naš tim.</p>
+          <p style="color:var(--muted);max-width:540px">Ako želite ponudu, dodatne informacije ili pomoć pri registraciji poslovnog naloga, kontaktirajte naš tim.</p>
           <div class="hero-actions">
             <a class="btn btn-dark" href="tel:+381677700771">Pozovite nas</a>
             <a class="btn" style="border-color:var(--line)" href="mailto:marbok.bgd@gmail.com">Pošaljite e-mail</a>
@@ -152,11 +152,11 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div><strong style="color:#fff">MARBOK DOO</strong><br><small>© <span id="year"></span> Sva prava zadržana.</small></div>
-      <div class="footer-nav"><a href="#o-nama">O nama</a><a href="#asortiman">Asortiman</a><a href="#kontakt">Kontakt</a><a href="https://marbok.vercel.app/">Web shop</a></div>
+      <div class="footer-nav"><a href="#o-nama">O nama</a><a href="katalog.html">Katalog proizvoda</a><a href="#kontakt">Kontakt</a><a href="https://marbok.vercel.app/auth/signup" target="_blank" rel="noopener">Registracija kupca</a></div>
     </div>
   </footer>
 
-  <a class="mobile-cta" href="https://marbok.vercel.app/" target="_blank" rel="noopener">Web shop ↗</a>
+  <a class="mobile-cta" href="katalog.html">Katalog proizvoda →</a>
   <script>
     const btn=document.getElementById('menuBtn'),nav=document.getElementById('navLinks');
     btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.textContent=open?'×':'☰'});
