@@ -32,6 +32,8 @@ jobs:
           CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
           "$CHROME_BIN" --headless --no-sandbox --disable-gpu --run-all-compositor-stages-before-draw --virtual-time-budget=60000 --no-pdf-header-footer --print-to-pdf=Marbok-katalog.pdf "file://${{ github.workspace }}/katalog-print.html"
           test -s Marbok-katalog.pdf
+      - name: Remove build-only catalog files
+        run: rm -f catalog-data.json katalog-print.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
