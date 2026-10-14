@@ -4,10 +4,35 @@ const query = '*[_type == "categoryPage"] | order(title asc) {title,"slug":slug.
 const endpoint = new URL("https://xkw8ym5s.apicdn.sanity.io/v2021-03-04/data/query/production");
 endpoint.searchParams.set("query", query);
 
-const response = await fetch(endpoint, { headers: { Accept: "application/json" } });
-if (!response.ok) throw new Error("Sanity query failed: " + response.status + " " + response.statusText);
+// If the CDN rejects a build request, try the origin before failing the build.
+async function fetchCatalog() {
+  const errors = [];
+  for (const host of ["xkw8ym5s.apicdn.sanity.io", "xkw8ym5s.api.sanity.io"]) {
+    const url = new URL(endpoint);
+    url.hostname = host;
+    try {
+      const response = await fetch(url, {
+        headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(30000)
+      });
+      if (!response.ok) {
+        errors.push(host + ": " + response.status + " " + response.statusText);
+        continue;
+      }
+      const payload = await response.json();
+      if (!Array.isArray(payload.result)) {
+        errors.push(host + ": invalid catalog response");
+        continue;
+      }
+      return payload;
+    } catch (error) {
+      errors.push(host + ": " + error.message);
+    }
+  }
+  throw new Error("Sanity query failed on both CDN and origin: " + errors.join("; "));
+}
 
-const payload = await response.json();
+const payload = await fetchCatalog();
 const categories = Array.isArray(payload.result) ? payload.result : [];
 const productCount = categories.reduce(function(total, category) {
   return total + (category.groups || []).reduce(function(sum, group) {
